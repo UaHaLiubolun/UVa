@@ -14,7 +14,7 @@ public class Main {
 
         Scanner Input = new Scanner(System.in);
 
-        while (Input.hasNext() || Input.next() == "EOF") {
+        while (Input.hasNext()) {
 
             NumberOfPerson = Input.nextInt();
             if (NumberOfPerson == 0 )   break;
@@ -34,6 +34,7 @@ public class Main {
                 M = M/NumberOfPerson;
             } else {
                 System.out.println("Data Error");
+                break;
             }
 
             for (int i = 0; i < C.length; i++) {
