@@ -8,7 +8,6 @@ public class Main {
     private static int NumberOfPerson;
     private static int[] Wealth;
     private static int[] C;
-    private static int Value = 0;
 
     public static void main(String args[]) {
 
@@ -19,11 +18,12 @@ public class Main {
             NumberOfPerson = Input.nextInt();
             if (NumberOfPerson == 0 )   break;
             Wealth = new int[NumberOfPerson];
-            C = new int[NumberOfPerson - 1];
+            C = new int[NumberOfPerson];
 
             int tmp = 0;
             int M = 0;
             int X = 0;
+            int Value = 0;
 
             for (int i = 0; i < NumberOfPerson; i++) {
                 Wealth[i] = Input.nextInt();
@@ -41,6 +41,7 @@ public class Main {
                 tmp += Wealth[i] - M;
                 C[i] = tmp;
             }
+            C[NumberOfPerson - 1]  = 0;
 
             Arrays.sort(C);
             int Middle = (int)C.length / 2;
@@ -50,7 +51,6 @@ public class Main {
                 X = C[Middle];
             }
 
-            Value += Math.abs(X);
             for (int i = 0; i < C.length; i++) {
                 Value += Math.abs(X - C[i]);
             }
