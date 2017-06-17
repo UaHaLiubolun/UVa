@@ -30,6 +30,9 @@ public class Coin {
     }
 
 
+    /**
+     * 区间调度问题
+     */
     public static void intervalScheduling () {
         int n = 5;
         int[] s = {1, 2, 4, 6, 8};

@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+/**
+ * 迷宫最短路径
+ */
 class Main{
 
     static void printIntArray(int[][] array) {
