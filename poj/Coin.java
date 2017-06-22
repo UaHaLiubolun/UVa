@@ -9,7 +9,7 @@ public class Coin {
     int[] v = {3, 2, 4, 2};
 
     public static void main(String[] args) {
-        Coin.bag();
+
     }
 
     /**
@@ -107,6 +107,8 @@ public class Coin {
 
         System.out.println(ans);
     }
+
+
 
 }
 
