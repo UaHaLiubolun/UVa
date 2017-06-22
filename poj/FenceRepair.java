@@ -1,7 +1,5 @@
 package UVa.poj;
 
-import java.util.Arrays;
-
 /**
  * POJ 3253
  * Fence Repair
@@ -44,6 +42,7 @@ public class FenceRepair {
                 mii2 = tmp;
             }
             L[mii1] = t;
+            //剪短数组 将数组最后数提到已经合并的位置
             L[mii2] = L[N - 1];
             N--;
         }

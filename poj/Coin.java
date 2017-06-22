@@ -4,10 +4,59 @@ import java.util.Arrays;
 
 public class Coin {
 
+    int n = 4, W = 5;
+    int[] w = {2, 1, 3, 2};
+    int[] v = {3, 2, 4, 2};
+
     public static void main(String[] args) {
-        Coin.intervalScheduling();
+        Coin.bag();
     }
 
+    /**
+     * 背包问题
+     * 有n个重量和价值分别为w，v的物品。重这些物品中挑出总重量不超过W的物品，求所有挑选方案中价值总和最大值
+     */
+    public static void bag() {
+        Coin coin = new Coin();
+        System.out.println(coin.rec(0, coin.W));
+    }
+
+    public static void anotherBag() {
+        Coin coin = new Coin();
+        int[][] res = new int[coin.n + 1][coin.W + 1];
+       for (int i = coin.n - 1; i >=0; i--) {
+           for (int j = 0; j <= i; j++) {
+               if (j < coin.w[i]) {
+                   res[i][j] = res[i + 1][j];
+               } else {
+                   res[i][j] = Math.max(res[i][j], res[i + 1][j - coin.w[i]] + coin.v[i]);
+               }
+           }
+       }
+    }
+
+    public String replaceSpace(String iniString, int length) {
+        // write code here
+        String s  = "";
+        for (int i = 0; i < length; i++) {
+            if (iniString.charAt(i) == ' ') {
+                s += "%20";
+            } else {
+                s += iniString.charAt(i);
+            }
+        }
+        return s;
+    }
+
+    public int rec(int i, int j) {
+        int res;
+        if (i == n) res = 0;
+        else if (j < w[i]) res = rec(i + 1, j);
+        else {
+            res = Math.max(rec(i + 1, j), rec(i + 1, j - w[i]) + v[i]);
+        }
+        return res;
+    }
 
     /**
      * 硬币问题
@@ -58,6 +107,7 @@ public class Coin {
 
         System.out.println(ans);
     }
+
 }
 
 
