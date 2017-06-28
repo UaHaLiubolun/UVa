@@ -5,7 +5,7 @@ package UVa.poj;
  */
 public class DP {
     public static void main(String[] args) {
-        DP.bagOne();
+        DP.maxUpArray();
     }
 
     /**
@@ -73,5 +73,29 @@ public class DP {
             }
         }
         System.out.println(dp[n][W]);
+    }
+
+    /**
+     * 最长上升子序列问题
+     * 有一个长为n的数列。求出这个序列中最长的上升子序列的长度。上升子序列指的是对于任意i < j都满足ai < aj 的子序列
+     * 在满足j < i并且aj < ai的以aj为结尾的上升子序列，追加上ai后得到的子序列
+     */
+    public static void maxUpArray() {
+        int n = 5;
+        int[] a = {4, 2, 3, 1, 5};
+
+        int[] dp = new int[n];
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            dp[i] = 1;
+            for (int j = 0; j < n; j++) {
+                if (a[j] < a[i]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+            }
+            res = Math.max(res, dp[i]);
+        }
+        System.out.println(res);
     }
 }
