@@ -4,6 +4,7 @@ package UVa.poj;
  * 动态规划相关问题
  */
 public class DP {
+
     public static void main(String[] args) {
         DP.maxUpArray();
     }
@@ -98,4 +99,6 @@ public class DP {
         }
         System.out.println(res);
     }
+
+
 }
