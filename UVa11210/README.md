@@ -1,1 +1,0 @@
-#中国麻将 (Chinese Mahjong, UVa 11210)
