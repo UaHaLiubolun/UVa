@@ -1,8 +1,6 @@
 package UVa.leetCode;
 
-/**
- * Created by jhonlambo on 2017/5/23.
- */
+
 public class NumberComplement {
 
     public int findComplement(int num) {

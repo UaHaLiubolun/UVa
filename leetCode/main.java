@@ -1,33 +1,57 @@
-package UVa.leetCode;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class main {
+public class  main {
+    private static ArrayList <Integer> tmpArr = new ArrayList<Integer>();
+    private static int count;
 
-    public static void main(String[] args)throws IOException,NumberFormatException{
-
-        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        String line=null;
-        while ((line=br.readLine())!=null){
-
-            int number=Integer.parseInt(line);
-            System.out.println(tentoEight(number));
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Sample Input:");
+        int n = sc.nextInt(); // 预算
+        int k = sc.nextInt(); // 想点菜的个数
+        int m = sc.nextInt(); // 菜的个数
+        int [] com = new int[m];
+        for(int i = 0; i < m; i++) {
+            com[i] = sc.nextInt();
         }
+        System.out.println("");
+        System.out.println("Sample Output:");
+
+        if(k > com.length || com.length <= 0){
+            System.out.println("0");
+        } else {
+            combine(0, k, com, n);
+            System.out.println(count);
+        }
+
     }
+    /*
+     * 递归求m个数组中选n个有多少种组合方式，
+     * 选出总价格不超过预订价格的组合方式，然后count++。
+     */
+    public static void combine(int index, int k, int[] arr, int n) {
 
-    public static int tentoEight(int input){
-        int number = 0;
-        int i = 0;
-        int x;
-        while (input != 0) {
-            x = input & 7;
-            number += (x * (int)Math.pow(10, i));
-            i++;
-            input = input >>= 3;
+        if(k == 1) {
+            for (int i = index; i < arr.length; i++) {
+                int sum = 0;
+                tmpArr.add(arr[i]);
+                for(int j = 0; j < tmpArr.size(); j++) {
+                    sum += tmpArr.get(j);
+                }
+                if(sum <= n) {
+                    count++;
+                }
+                tmpArr.remove((Object)arr[i]);
+            }
+        } else if(k > 1) {
+            for (int i = index; i <= arr.length - k; i++) {
+                tmpArr.add(arr[i]);
+                combine(i + 1, k - 1, arr, n);
+                tmpArr.remove((Object)arr[i]);
+            }
+        } else {
+            return ;
         }
-        return number;
     }
 }
